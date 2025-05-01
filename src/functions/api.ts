@@ -40,28 +40,10 @@ export function TOKEN_VALIDADE_POST(token: string): {
     },
   };
 }
-export function USER_POST(body: {
-  username: string;
-  password: string;
-  email: string;
-}): {
+export function USER_POST(): {
   url: string;
-  options: {
-    method: 'POST';
-    headers: {
-      'Content-Type': string;
-    };
-    body: string;
-  };
 } {
-  return {
-    url: API_URL + '/api/user',
-    options: {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    },
-  };
+  return { url: API_URL + '/api/user' };
 }
 export function PHOTO_POST(
   formData: FormData,
