@@ -154,21 +154,11 @@ export function PHOTO_DELETE(id: number): {
   };
 }
 
-export function PASSWORD_LOST(body: { login: string; url: string }): {
+export function PASSWORD_LOST(): {
   url: string;
-  options: {
-    method: 'POST';
-    headers: { 'Content-Type': string };
-    body: string;
-  };
 } {
   return {
     url: API_URL + '/api/password/lost',
-    options: {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    },
   };
 }
 

@@ -21,7 +21,7 @@ const LoginCriarForm = () => {
     data: null,
   });
   useEffect(() => {
-    // if (state.ok) window.location.href = '/conta';
+    if (state.ok) window.location.href = '/conta';
   }, [state.ok]);
   return (
     <>
