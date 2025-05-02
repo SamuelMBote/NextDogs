@@ -162,25 +162,11 @@ export function PASSWORD_LOST(): {
   };
 }
 
-export function PASSWORD_RESET(body: {
-  login: string;
-  key: string;
-  password: string;
-}): {
+export function PASSWORD_RESET(): {
   url: string;
-  options: {
-    method: 'POST';
-    headers: { 'Content-Type': string };
-    body: string;
-  };
 } {
   return {
     url: API_URL + '/api/password/reset',
-    options: {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    },
   };
 }
 export function STATS_GET(): {
