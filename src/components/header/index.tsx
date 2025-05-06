@@ -2,8 +2,10 @@ import Link from 'next/link';
 import React from 'react';
 import styles from './style.module.css';
 import Image from 'next/image';
-const Header = () => {
-  const user = false;
+import userGet from '@/actions/user-get';
+const Header = async () => {
+  const { data } = await userGet();
+  console.log(data);
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
@@ -15,9 +17,9 @@ const Header = () => {
             height={22}
           />
         </Link>
-        {user ? (
+        {data ? (
           <Link className={styles.login} href={'/conta'}>
-            dogs
+            {data.username}
           </Link>
         ) : (
           <Link className={styles.login} href={'/login'}>
