@@ -25,3 +25,5 @@ export default async function userGet() {
     return apiError(error);
   }
 }
+// const userGetCache = cache(userGet);
+// export default userGetCache;
