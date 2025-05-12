@@ -5,11 +5,11 @@ import React from 'react';
 const PageConta = () => {
   const { user } = useUser();
   return (
-    <div>
+    <main>
       <h1 className="title" onClick={() => console.log()}>
         Conta {user?.nome}
       </h1>
-    </div>
+    </main>
   );
 };
 
