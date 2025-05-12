@@ -36,25 +36,14 @@ export function USER_POST(): {
   return { url: API_URL + '/api/user' };
 }
 export function PHOTO_POST(
-  formData: FormData,
-  token: string,
+
 ): {
   url: string;
-  options: {
-    method: 'POST';
-    headers: {
-      Authorization: string;
-    };
-    body: FormData;
-  };
+
 } {
   return {
     url: API_URL + '/api/photo',
-    options: {
-      method: 'POST',
-      headers: { Authorization: 'Bearer ' + token },
-      body: formData,
-    },
+
   };
 }
 
