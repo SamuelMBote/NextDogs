@@ -9,7 +9,6 @@ type ResetarSearchParams = {
   searchParams: { key: string; login: string };
 };
 const PageResetar = ({ searchParams }: ResetarSearchParams) => {
-  console.log(searchParams);
   return (
     <div className="animeLeft">
       <h1 className="title">Resete a senha</h1>

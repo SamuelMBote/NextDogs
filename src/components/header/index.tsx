@@ -5,7 +5,6 @@ import Image from 'next/image';
 import userGet from '@/actions/user-get';
 const Header = async () => {
   const { data } = await userGet();
-  console.log(data);
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>

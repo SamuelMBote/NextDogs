@@ -6,9 +6,7 @@ const PageConta = () => {
   const { user } = useUser();
   return (
     <main>
-      <h1 className="title" onClick={() => console.log()}>
-        Conta {user?.nome}
-      </h1>
+      <h1 className="title">Conta {user?.nome}</h1>
     </main>
   );
 };

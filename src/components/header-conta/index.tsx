@@ -8,6 +8,8 @@ import SairIcon from '@/icons/sair-icon';
 import EstatisticasIcon from '@/icons/estatisticas-icon';
 import FeedIcon from '@/icons/feed-icon';
 import Link from 'next/link';
+import logout from '@/actions/logout';
+import { useUser } from '@/context/user-context';
 
 function getTitle(pathname: string) {
   switch (pathname) {
@@ -30,8 +32,12 @@ const HeaderConta = () => {
   React.useEffect(() => {
     setMobileMenu(false);
   }, [pathname]);
+  const { setUser } = useUser();
 
-  function handleLogout() {}
+  async function handleLogout() {
+    await logout();
+    setUser(null);
+  }
   return (
     <header className={style.header}>
       <h1 className="title">{getTitle(pathname)}</h1>
