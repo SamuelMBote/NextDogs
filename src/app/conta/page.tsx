@@ -11,7 +11,7 @@ const PageConta = async () => {
   return (
     <main>
       {data?.length ? (
-        <Feed photos={data} />
+        <Feed photos={data} user={user?.username} />
       ) : (
         <div>
           <p

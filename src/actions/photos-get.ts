@@ -19,16 +19,16 @@ type PhotoGetParams = {
   total?: number;
   user?: 0 | string;
 };
-export default async function photosGet({
-  page = 1,
-  total = 6,
-  user = 0,
-}: PhotoGetParams = {}) {
+export default async function photosGet(
+  { page = 1, total = 6, user = 0 }: PhotoGetParams = {},
+  optionsFront?: RequestInit,
+) {
   try {
-    const { url } = PHOTOS_GET({ page, total, user });
-    const response = await fetch(url, {
+    const options = optionsFront || {
       next: { revalidate: 10, tags: ['photos'] },
-    });
+    };
+    const { url } = PHOTOS_GET({ page, total, user });
+    const response = await fetch(url, options);
     if (!response.ok) throw new Error('Erro ao buscar as fotos');
     const data = (await response.json()) as Array<Photo>;
     return { data, ok: true, error: '' };
