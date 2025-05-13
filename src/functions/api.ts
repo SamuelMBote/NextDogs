@@ -35,15 +35,11 @@ export function USER_POST(): {
 } {
   return { url: API_URL + '/api/user' };
 }
-export function PHOTO_POST(
-
-): {
+export function PHOTO_POST(): {
   url: string;
-
 } {
   return {
     url: API_URL + '/api/photo',
-
   };
 }
 
@@ -54,7 +50,7 @@ export function PHOTOS_GET({
 }: {
   page: number;
   total: number;
-  user: string | number;
+  user: 0 | string;
 }): {
   url: string;
   options: {

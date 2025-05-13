@@ -6,7 +6,7 @@ const Feed = ({ photos }: { photos: Array<Photo> }) => {
   return (
     <div>
       <h1>Feed</h1>
-      <FeedPhotos photos={photos} />
+      {photos && <FeedPhotos photos={photos} />}
     </div>
   );
 };
