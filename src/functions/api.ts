@@ -66,19 +66,11 @@ export function PHOTOS_GET({
     },
   };
 }
-export function PHOTO_GET(id: number): {
+export function PHOTO_GET(id: string): {
   url: string;
-  options: {
-    method: 'GET';
-    cache: string;
-  };
 } {
   return {
     url: API_URL + `/api/photo/${id}`,
-    options: {
-      method: 'GET',
-      cache: 'no-store',
-    },
   };
 }
 

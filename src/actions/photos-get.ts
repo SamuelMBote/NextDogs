@@ -10,7 +10,7 @@ export type Photo = {
   date: string | Date;
   src: string;
   peso: string | number;
-  idade: string | number;
+  idade: number;
   acessos: string | number;
   total_comments: string | number;
 };

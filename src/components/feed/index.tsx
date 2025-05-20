@@ -16,9 +16,17 @@ const Feed = ({
   const fetching = React.useRef(false);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [infinite, setInfinite] = React.useState<boolean>(
-    photos.length < 6 ? true : false,
+    photos.length <= 6 ? true : false,
   );
-
+  async function getPagePhotos(page: number) {
+    console.log({ user });
+    const actionData = await photosGet({ page, total: 6, user });
+    if (actionData && actionData.data !== null) {
+      const { data } = actionData;
+      setPhotosFeed((currentPhotos) => [...currentPhotos, ...data]);
+      if (data.length < 6) setInfinite(false);
+    }
+  }
   React.useEffect(() => {
     if (infinite) {
       window.addEventListener('scroll', infiniteScroll);
@@ -44,16 +52,9 @@ const Feed = ({
   }
   React.useEffect(() => {
     if (page === 1) return;
-    async function getPagePhotos(page: number) {
-      const actionData = await photosGet({ page, total: 6, user });
-      if (actionData && actionData.data !== null) {
-        const { data } = actionData;
-        setPhotosFeed((currentPhotos) => [...currentPhotos, ...data]);
-        if (data.length < 6) setInfinite(false);
-      }
-    }
+
     getPagePhotos(page);
-  }, [page, user]);
+  }, [page]);
   return (
     <div>
       <FeedPhotos photos={photosFeed} />
