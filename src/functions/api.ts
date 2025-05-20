@@ -101,23 +101,11 @@ export function COMMENT_POST(
   };
 }
 
-export function PHOTO_DELETE(id: number): {
+export function PHOTO_DELETE(id: string): {
   url: string;
-  options: {
-    method: 'DELETE';
-    headers: {
-      Authorization: string;
-    };
-  };
 } {
   return {
     url: API_URL + `/api/photo/${id}`,
-    options: {
-      method: 'DELETE',
-      headers: {
-        Authorization: 'Bearer ' + window.localStorage.getItem('token'),
-      },
-    },
   };
 }
 

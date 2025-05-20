@@ -23,7 +23,7 @@ const PhotoContent = ({
       <div className={style.details}>
         <div>
           <p className={style.author}>
-            {user && 'username' in user && user.username === photo.author ? (
+            {user ? (
               <PhotoDelete id={String(photo.id)} />
             ) : (
               <Link href={`/perfil/${photo.author}`}>@{photo.author}</Link>
