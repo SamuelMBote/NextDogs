@@ -2,7 +2,8 @@
 import React from 'react';
 import FeedPhotos from '../feed-photos';
 import photosGet, { Photo } from '@/actions/photos-get';
-
+import Loading from '../loading';
+import style from './style.module.css';
 const Feed = ({
   photos,
   user,
@@ -52,12 +53,14 @@ const Feed = ({
       }
     }
     getPagePhotos(page);
-  }, [page]);
+  }, [page, user]);
   return (
     <div>
-      <h1>Feed</h1>
       <FeedPhotos photos={photosFeed} />
-      {loading && <p>Carregando...</p>}
+
+      <div className={style.loadingWrapper}>
+        {infinite ? loading && <Loading /> : <p>Não existe mais postagens</p>}
+      </div>
     </div>
   );
 };
