@@ -13,21 +13,11 @@ export function USER_GET(): {
     url: API_URL + '/api/user',
   };
 }
-export function TOKEN_VALIDADE_POST(token: string): {
+export function TOKEN_VALIDADE_POST(): {
   url: string;
-  options: {
-    method: 'POST';
-    headers: {
-      Authorization: string;
-    };
-  };
 } {
   return {
     url: API_URL + '/jwt-auth/v1/token/validate',
-    options: {
-      method: 'POST',
-      headers: { Authorization: 'Bearer ' + token },
-    },
   };
 }
 export function USER_POST(): {
