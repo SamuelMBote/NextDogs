@@ -6,6 +6,7 @@ import { useUser } from '@/context/user-context';
 import Image from 'next/image';
 import PhotoDelete from '../photo-delete';
 import { PhotoData } from '@/actions/photo-get';
+import PhotoComments from '../photo-comments';
 const PhotoContent = ({
   data,
   single,
@@ -13,7 +14,7 @@ const PhotoContent = ({
   data: PhotoData;
   single: boolean;
 }) => {
-  const { photo } = data;
+  const { photo, comments } = data;
   const user = useUser();
   return (
     <div className={`${style.photo} ${single ? style.single : ''}`}>
@@ -41,7 +42,11 @@ const PhotoContent = ({
           </ul>
         </div>
       </div>
-      {/* <PhotoComments single={single} id={photo.id} comments={comments} /> */}
+      <PhotoComments
+        single={single}
+        id={String(photo.id)}
+        comments={comments}
+      />
     </div>
   );
 };
