@@ -54,7 +54,7 @@ const Feed = ({
     if (page === 1) return;
 
     getPagePhotos(page);
-  }, [page]);
+  }, [page, getPagePhotos]);
   return (
     <div>
       <FeedPhotos photos={photosFeed} />

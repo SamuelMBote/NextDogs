@@ -3,16 +3,16 @@ import PhotoContent from '@/components/photo-content';
 import { notFound } from 'next/navigation';
 import React from 'react';
 type PhotoIdParams = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 };
 export async function generateMetadata({ params }: PhotoIdParams) {
-  const { data } = await photoGet(params.id);
+  const { id } = await params;
+  const { data } = await photoGet(id);
   if (!data) return { title: 'Fotos' };
   return { title: data?.photo.title };
 }
-const PageIdFoto = async ({ params: { id } }: { params: { id: string } }) => {
+const PageIdFoto = async ({ params }: PhotoIdParams) => {
+  const { id } = await params;
   const { data } = await photoGet(id);
   if (!data) return notFound();
   return (

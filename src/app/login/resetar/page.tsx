@@ -6,16 +6,14 @@ export const metadata: Metadata = {
   description: 'Resete sua conta no site Dogs',
 };
 type ResetarSearchParams = {
-  searchParams: { key: string; login: string };
+  searchParams: Promise<{ key: string; login: string }>;
 };
-const PageResetar = ({ searchParams }: ResetarSearchParams) => {
+const PageResetar = async ({ searchParams }: ResetarSearchParams) => {
+  const { key, login } = await searchParams;
   return (
     <div className="animeLeft">
       <h1 className="title">Resete a senha</h1>
-      <LoginResetarForm
-        keyToken={searchParams.key}
-        login={searchParams.login}
-      />
+      <LoginResetarForm keyToken={key} login={login} />
     </div>
   );
 };

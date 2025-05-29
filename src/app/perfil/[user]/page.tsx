@@ -3,10 +3,11 @@ import Feed from '@/components/feed';
 import React from 'react';
 
 const PagePerfilUser = async ({
-  params: { user },
+  params,
 }: {
-  params: { user: string };
+  params: Promise<{ user: string }>;
 }) => {
+  const { user } = await params;
   const { data } = await photosGet({ user });
   if (!data) return null;
   return (
