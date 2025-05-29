@@ -1,11 +1,20 @@
+import photosGet from '@/actions/photos-get';
+import Feed from '@/components/feed';
 import React from 'react';
 
-const PageUser = ({ params: { user } }: { params: { user: string } }) => {
+const PagePerfilUser = async ({
+  params: { user },
+}: {
+  params: { user: string };
+}) => {
+  const { data } = await photosGet({ user });
+  if (!data) return null;
   return (
-    <div>
-      <h1>Usuário: {user}</h1>
-    </div>
+    <section className="container mainSection">
+      <h1 className="title"> {user}</h1>
+      <Feed photos={data} user={user} />
+    </section>
   );
 };
 
-export default PageUser;
+export default PagePerfilUser;
